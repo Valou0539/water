@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water.com | Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="header_nav">
+            <a class="logo" href="#">Water.</a>
+            <div class="menu">
+                <button onclick="toggleClass()">
+                    <div class="menu_button">menu</div>
+                    <div class="hamburger_button">
+                        <img class="menu_button_img" src="img/menu.png" alt="menu button image">
+                        <img class="close_img" src="img/close.png" alt="menu button image">
+                    </div>
+                </button>
+                <div class="menu_content">
+                    <a href="#">home</a>
+                    <a href="#">about</a>
+                    <a href="#">tour</a>
+                    <a href="#">contact</a>
+                </div>
+            </div>
+        </nav>
+        <div class="title">
+            <h1>Hapiness is...</h1>
+            <h2>Crystal clear ocean water.</h2>
+        </div>
+        <div class="social_media">
+            <a href="#">twitter</a>
+            <a href="#">facebook</a>
+            <a href="#">instagram</a>
+        </div>
+        <video class="background_video" autoplay loop muted>
+            <source src="video/water.mp4" type="video/mp4">
+            <img src="img/water.png" alt="image de l'océan débarrassé de polution">
+        </video>
+    </header>
+
+    <script>
+        const header = document.querySelector('.header')
+        const menuContent = document.querySelector('.menu_content')
+        const button = document.querySelector('.menu button')
+        let value = true
+        function toggleMenuContent () {
+            if (value) {
+                menuContent.style.display = 'flex'
+                value = false
+            } else {
+                window.setTimeout(function () {menuContent.style.display = 'none'}, 800)
+                value = true
+            }
+            menuContent.offsetHeight
+            menuContent.classList.toggle('active')
+        }
+        function toggleHeader () {
+            header.classList.toggle('active')
+        }
+        function toggleButton () {
+            if (button.classList.contains('active')) {
+                document.querySelector('.menu_button').textContent = 'Menu'
+                button.classList.remove('active')
+            } else {
+                document.querySelector('.menu_button').textContent = 'Close'
+                button.classList.add('active')
+            }
+        }
+        function toggleClass () {
+            toggleButton()
+            if (header.classList.contains('active') === false) {
+                toggleHeader()
+                window.setTimeout(toggleMenuContent, 500)
+            } else {
+                toggleMenuContent()
+                window.setTimeout(toggleHeader, 500)
+            }
+        }
+    </script>
+</body>
+</html>   
